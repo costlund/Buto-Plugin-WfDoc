@@ -1,0 +1,5 @@
+author: Claes Östlund
+link: http://www.webforms.se
+type:
+  - pager
+description: 'Handle requests to pages in /theme/[author]/[theme]/page folder.'
