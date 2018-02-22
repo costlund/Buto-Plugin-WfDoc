@@ -44,7 +44,7 @@ class PluginWfDoc{
       wfArray::set($GLOBALS, 'sys/layout_path', '/theme/'.wfArray::get($GLOBALS, 'sys/theme').'/'.$settings->get('layout_folder'));
       wfDocument::mergeLayout($page);
     }else{
-      wfEvent::run('page_not_found', array('description' => 'Yml file for page does not exist in folder '.$settings->get('page_folder').'.', 'plugin' => wfArray::get($GLOBALS, 'sys/plugin'), 'class' => wfArray::get($GLOBALS, 'sys/class'), 'method' => $method, 'filename' => $filename));
+      wfEvent::run('page_not_found', array('description' => 'PluginWfDoc could not find the file '.$settings->get('page_folder').'/'.$method.'.yml.', 'plugin' => wfArray::get($GLOBALS, 'sys/plugin'), 'class' => wfArray::get($GLOBALS, 'sys/class'), 'method' => $method, 'filename' => $filename));
     }
   }
 }
