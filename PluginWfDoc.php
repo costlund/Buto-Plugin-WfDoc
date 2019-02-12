@@ -1,21 +1,4 @@
 <?php
-/**
-<p>
-Render pages from theme page folders.
-</p>
-<p>
-Example of usage. Param p can be anything and will represent /p/name_of_page in page request.
-</p>
-<p>One could use this multiple times in theme by changing the parmas settings/page_folder and settings/layout_folder.</p>
-#code-yml#
-plugin_modules:
-  p:
-    plugin: 'wf/doc'
-    settings:
-      page_folder: Set this if want to use other than page as folder.
-      layout_folder: Set this if want to use other than layout as folder.
-#code#
- */
 class PluginWfDoc{
   public function __call($method, $args) {
     wfPlugin::includeonce('wf/array');
@@ -23,7 +6,6 @@ class PluginWfDoc{
      * Default folders.
      */
     $settings = new PluginWfArray(array('page_folder' => 'page', 'layout_folder' => 'layout'));
-    
     /**
      * Get theme settings.
      */
