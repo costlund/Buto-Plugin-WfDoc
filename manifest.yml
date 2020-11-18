@@ -6,7 +6,7 @@ history:
 plugin:
   -
     name: wf/array
-    version: 1.0.1
+    version: 1.2.0
 sys:
   -
     name: mercury
@@ -14,5 +14,5 @@ sys:
       - '1.0'
 php:
   - '7.2'
-author: Claes Östlund
+author: 'Claes Östlund'
 description: ''
