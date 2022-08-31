@@ -7,7 +7,7 @@ class PluginWfDoc{
      */
     $settings = new PluginWfArray(array('page_folder' => 'page', 'layout_folder' => 'layout'));
     /**
-     * Get theme settings.
+     * Get theme settings for this page.
      */
     $theme_settings = new PluginWfArray(wfArray::get($GLOBALS, 'sys/settings/plugin_modules/'.wfArray::get($GLOBALS, 'sys/class').'/settings'));
     if($theme_settings->get()){
@@ -20,6 +20,9 @@ class PluginWfDoc{
      * Removing the "page_" prefix.
      */
     $method = substr($method, 5);
+    /**
+     * 
+     */
     $filename = wfArray::get($GLOBALS, 'sys/theme_dir').'/'.$settings->get('page_folder').'/'.$method.'.yml';
     if(file_exists($filename)){
       $page = sfYaml::load($filename);
