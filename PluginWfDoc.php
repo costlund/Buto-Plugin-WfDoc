@@ -26,6 +26,7 @@ class PluginWfDoc{
     $filename = wfArray::get($GLOBALS, 'sys/theme_dir').'/'.$settings->get('page_folder').'/'.$method.'.yml';
     if(file_exists($filename)){
       $page = sfYaml::load($filename);
+      wfArray::set($GLOBALS, 'sys/filename', $filename);
       wfArray::set($GLOBALS, 'sys/layout_path', '/theme/'.wfArray::get($GLOBALS, 'sys/theme').'/'.$settings->get('layout_folder'));
       wfDocument::mergeLayout($page);
     }else{
