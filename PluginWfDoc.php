@@ -19,7 +19,7 @@ class PluginWfDoc{
     /**
      * Removing the "page_" prefix.
      */
-    $method = substr($method, 5);
+    $method = wfPhpfunc::substr($method, 5);
     /**
      * 
      */
