@@ -9,7 +9,7 @@ class PluginWfDoc{
     /**
      * Get theme settings for this page.
      */
-    $theme_settings = new PluginWfArray(wfArray::get($GLOBALS, 'sys/settings/plugin_modules/'.wfArray::get($GLOBALS, 'sys/class').'/settings'));
+    $theme_settings = new PluginWfArray(wfGlobals::get('settings/plugin_modules/'.wfGlobals::get('class').'/settings'));
     if($theme_settings->get()){
       /**
        * Merge theme settings with defaults.
@@ -23,14 +23,14 @@ class PluginWfDoc{
     /**
      * 
      */
-    $filename = wfArray::get($GLOBALS, 'sys/theme_dir').'/'.$settings->get('page_folder').'/'.$method.'.yml';
+    $filename = wfGlobals::get('theme_dir').'/'.$settings->get('page_folder').'/'.$method.'.yml';
     if(file_exists($filename)){
       $page = sfYaml::load($filename);
-      wfArray::set($GLOBALS, 'sys/filename', $filename);
-      wfGlobals::setSys('layout_path', '/theme/'.wfArray::get($GLOBALS, 'sys/theme').'/'.$settings->get('layout_folder'));
+      wfGlobals::set('filename', $filename);
+      wfGlobals::setSys('layout_path', '/theme/'.wfGlobals::get('theme').'/'.$settings->get('layout_folder'));
       wfDocument::mergeLayout($page);
     }else{
-      wfEvent::run('page_not_found', array('description' => 'PluginWfDoc could not find the file '.$settings->get('page_folder').'/'.$method.'.yml.', 'plugin' => wfArray::get($GLOBALS, 'sys/plugin'), 'class' => wfArray::get($GLOBALS, 'sys/class'), 'method' => $method, 'filename' => $filename));
+      wfEvent::run('page_not_found', array('description' => 'PluginWfDoc could not find the file '.$settings->get('page_folder').'/'.$method.'.yml.', 'plugin' => wfGlobals::get('plugin'), 'class' => wfGlobals::get('class'), 'method' => $method, 'filename' => $filename));
     }
   }
 }

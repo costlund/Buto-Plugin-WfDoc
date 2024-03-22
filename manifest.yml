@@ -1,5 +1,9 @@
-version: 1.3.1
+version: 1.3.2
 history:
+  1.3.2:
+    date: '2024-03-22'
+    title: Code
+    description: 'Code improvements.'
   1.3.1:
     date: '2023-09-11'
     title: Versions
