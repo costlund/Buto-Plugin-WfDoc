@@ -5,11 +5,16 @@ class PluginWfDoc{
     /**
      * Default folders.
      */
-    $settings = new PluginWfArray(array('page_folder' => 'page', 'layout_folder' => 'layout'));
+    $settings = new PluginWfArray(array('page_folder' => wfGlobals::get('theme_dir').'/'.'page', 'layout_folder' => 'layout'));
     /**
      * Get theme settings for this page.
      */
     $theme_settings = new PluginWfArray(wfGlobals::get('settings/plugin_modules/'.wfGlobals::get('class').'/settings'));
+    if($theme_settings->get('page_folder')){
+      if(substr($theme_settings->get('page_folder'), 0, 1)!='['){
+        $theme_settings->set('page_folder', wfGlobals::get('theme_dir').'/'.$theme_settings->get('page_folder'));
+      } 
+    }
     if($theme_settings->get()){
       /**
        * Merge theme settings with defaults.
@@ -23,7 +28,8 @@ class PluginWfDoc{
     /**
      * 
      */
-    $filename = wfGlobals::get('theme_dir').'/'.$settings->get('page_folder').'/'.$method.'.yml';
+    $filename = $settings->get('page_folder').'/'.$method.'.yml';
+    $filename = wfSettings::replaceDir($filename);
     if(file_exists($filename)){
       $page = sfYaml::load($filename);
       wfGlobals::set('filename', $filename);
