@@ -30,6 +30,20 @@ class PluginWfDoc{
      */
     $filename = $settings->get('page_folder').'/'.$method.'.yml';
     $filename = wfSettings::replaceDir($filename);
+    /**
+     * default_method_not_exist
+     */
+    if(!file_exists($filename) && wfGlobals::get('settings/default_method_not_exist')){
+      $method = wfGlobals::get('settings/default_method_not_exist');
+      $filename = $settings->get('page_folder').'/'.$method.'.yml';
+      $filename = wfSettings::replaceDir($filename);
+      if(!file_exists($filename)){
+        throw new Error(__CLASS__." says: Page $filename does not exist!");
+      }
+    }
+    /**
+     * 
+     */
     if(file_exists($filename)){
       $page = sfYaml::load($filename);
       wfGlobals::set('filename', $filename);

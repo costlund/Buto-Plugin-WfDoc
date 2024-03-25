@@ -1,5 +1,9 @@
-version: 1.3.3
+version: 1.4.0
 history:
+  1.4.0:
+    date: '2024-03-25'
+    title: Page not exist
+    description: 'If calling a none existing page one could add a page for that with theme settings param default_method_not_exist.'
   1.3.3:
     date: '2024-03-22'
     title: Page folder
